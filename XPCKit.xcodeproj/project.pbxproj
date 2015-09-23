@@ -13,7 +13,7 @@
 		1E5F84AB13E10DB700234F31 /* XPCService.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E5F84A713E10DB700234F31 /* XPCService.m */; };
 		1E835CB113DF748000338391 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EEDD0B613DE79D200D5AEC3 /* Foundation.framework */; };
 		1E835CB313DF74BF00338391 /* XPCKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EEDD0CF13DE9FAB00D5AEC3 /* XPCKit.framework */; };
-		1E835CB513DF74C900338391 /* XPCKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 1EEDD0CF13DE9FAB00D5AEC3 /* XPCKit.framework */; };
+		1E835CB513DF74C900338391 /* XPCKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 1EEDD0CF13DE9FAB00D5AEC3 /* XPCKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		1EB022A5141D9F3700BCC1FB /* NSDate+XPCParse.h in Headers */ = {isa = PBXBuildFile; fileRef = 1EB022A3141D9F3700BCC1FB /* NSDate+XPCParse.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1EB022A6141D9F3700BCC1FB /* NSDate+XPCParse.h in Headers */ = {isa = PBXBuildFile; fileRef = 1EB022A3141D9F3700BCC1FB /* NSDate+XPCParse.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1EB022A7141D9F3700BCC1FB /* NSDate+XPCParse.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EB022A4141D9F3700BCC1FB /* NSDate+XPCParse.m */; };
@@ -29,7 +29,7 @@
 		1EEDD06D13DD48BC00D5AEC3 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1EEDD06B13DD48BC00D5AEC3 /* MainMenu.xib */; };
 		1EEDD07B13DD48D800D5AEC3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1EEDD07913DD48D800D5AEC3 /* InfoPlist.strings */; };
 		1EEDD07E13DD48D800D5AEC3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EEDD07D13DD48D800D5AEC3 /* main.m */; };
-		1EEDD08513DD498900D5AEC3 /* com.mustacheware.TestService.xpc in Copy Services */ = {isa = PBXBuildFile; fileRef = 1EEDD07513DD48D800D5AEC3 /* com.mustacheware.TestService.xpc */; };
+		1EEDD08513DD498900D5AEC3 /* com.mustacheware.TestService.xpc in Copy Services */ = {isa = PBXBuildFile; fileRef = 1EEDD07513DD48D800D5AEC3 /* com.mustacheware.TestService.xpc */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		1EEDD08813DD508C00D5AEC3 /* XPCConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = 1EEDD08613DD508C00D5AEC3 /* XPCConnection.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1EEDD08913DD508C00D5AEC3 /* XPCConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EEDD08713DD508C00D5AEC3 /* XPCConnection.m */; };
 		1EEDD08C13DDC34800D5AEC3 /* NSDictionary+XPCParse.h in Headers */ = {isa = PBXBuildFile; fileRef = 1EEDD08A13DDC34800D5AEC3 /* NSDictionary+XPCParse.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -589,7 +589,7 @@
 		1EEDD01F13DD485400D5AEC3 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = Mustacheware;
 			};
 			buildConfigurationList = 1EEDD02213DD485400D5AEC3 /* Build configuration list for PBXProject "XPCKit" */;
@@ -820,17 +820,20 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -846,6 +849,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 			};
 			name = "Debug App Store";
@@ -862,6 +866,7 @@
 				INFOPLIST_FILE = "XPCKit/XPCKit-Info.plist";
 				INSTALL_PATH = "@rpath";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mustacheware.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = framework;
 			};
@@ -870,6 +875,7 @@
 		113D20561BB2B9430047F155 /* Debug App Store */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "XPCKit/XPCKit-Prefix.pch";
 				PRODUCT_NAME = XPCKit;
@@ -887,6 +893,7 @@
 				INFOPLIST_FILE = "TestApp/TestApp-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks /Library/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mustacheware.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -907,6 +914,7 @@
 					"-ObjC",
 					"-all_load",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "${EXECUTABLE_NAME}";
 				PRODUCT_NAME = "com.mustacheware.$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = xpc;
@@ -925,6 +933,7 @@
 					"-ObjC",
 					"-all_load",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "___VARIABLE_bundleIdentifierPrefix:bundleIdentifier___.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = octest;
 			};
@@ -934,17 +943,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
@@ -970,6 +981,7 @@
 				INFOPLIST_FILE = "XPCKit/XPCKit-Info.plist";
 				INSTALL_PATH = "@rpath";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mustacheware.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = framework;
 			};
@@ -978,6 +990,7 @@
 		113D205C1BB2B94A0047F155 /* Release App Store */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "XPCKit/XPCKit-Prefix.pch";
 				PRODUCT_NAME = XPCKit;
@@ -995,6 +1008,7 @@
 				INFOPLIST_FILE = "TestApp/TestApp-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks /Library/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mustacheware.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1015,6 +1029,7 @@
 					"-ObjC",
 					"-all_load",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "${EXECUTABLE_NAME}";
 				PRODUCT_NAME = "com.mustacheware.$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = xpc;
@@ -1033,6 +1048,7 @@
 					"-ObjC",
 					"-all_load",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "___VARIABLE_bundleIdentifierPrefix:bundleIdentifier___.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = octest;
 			};
@@ -1042,17 +1058,20 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -1068,6 +1087,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -1076,17 +1096,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
@@ -1103,6 +1125,7 @@
 		1EEDD05013DD485400D5AEC3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "XPCKit/XPCKit-Prefix.pch";
 				PRODUCT_NAME = XPCKit;
@@ -1112,6 +1135,7 @@
 		1EEDD05113DD485400D5AEC3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "XPCKit/XPCKit-Prefix.pch";
 				PRODUCT_NAME = XPCKit;
@@ -1130,6 +1154,7 @@
 					"-ObjC",
 					"-all_load",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "___VARIABLE_bundleIdentifierPrefix:bundleIdentifier___.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = octest;
 			};
@@ -1147,6 +1172,7 @@
 					"-ObjC",
 					"-all_load",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "___VARIABLE_bundleIdentifierPrefix:bundleIdentifier___.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = octest;
 			};
@@ -1163,6 +1189,7 @@
 				INFOPLIST_FILE = "TestApp/TestApp-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks /Library/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mustacheware.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1179,6 +1206,7 @@
 				INFOPLIST_FILE = "TestApp/TestApp-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks /Library/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mustacheware.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1199,6 +1227,7 @@
 					"-ObjC",
 					"-all_load",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "${EXECUTABLE_NAME}";
 				PRODUCT_NAME = "com.mustacheware.$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = xpc;
@@ -1220,6 +1249,7 @@
 					"-ObjC",
 					"-all_load",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "${EXECUTABLE_NAME}";
 				PRODUCT_NAME = "com.mustacheware.$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = xpc;
@@ -1238,6 +1268,7 @@
 				INFOPLIST_FILE = "XPCKit/XPCKit-Info.plist";
 				INSTALL_PATH = "@rpath";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mustacheware.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = framework;
 			};
@@ -1255,6 +1286,7 @@
 				INFOPLIST_FILE = "XPCKit/XPCKit-Info.plist";
 				INSTALL_PATH = "@rpath";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mustacheware.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = framework;
 			};
