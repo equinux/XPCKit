@@ -28,13 +28,14 @@
 
 	// NOTE: mmap'd files do not work right now, this returns inconsistently-sized files for some reason.
 	// Only remove the "NO &&" if you know what you're doing.
-	if(NO && type == XPC_TYPE_SHMEM){
+	/* if(NO && type == XPC_TYPE_SHMEM){
 		void *buffer = NULL;
 		size_t length = xpc_shmem_map(xpcObject, &buffer);
 		if(length > 0){
 			data = [NSData dataWithBytesNoCopy:buffer length:length freeWhenDone:NO];
 		}
-	}else if(type == XPC_TYPE_DATA){
+	}else */
+    if(type == XPC_TYPE_DATA){
 		data =  [NSData dataWithBytes:xpc_data_get_bytes_ptr(xpcObject)
 							   length:xpc_data_get_length(xpcObject)];
 	}
